@@ -1,15 +1,15 @@
+// index.js
 const express = require('express');
 const connectDB = require('./config/database');
 require('dotenv').config();
 
 const app = express();
-connectDB(); // Conecta a MongoDB
+connectDB(); // Conexión a MongoDB
 
 app.use(express.json());
-app.use('/api/usuarios', require('./routes/usuarios'));
 
-// Aquí van tus rutas
-// app.use('/api/usuarios', require('./routes/usuarios'));
+// Aquí conectas la ruta de usuarios
+app.use('/api/usuarios', require('./routes/usuarios'));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
