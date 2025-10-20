@@ -1,0 +1,529 @@
+
+/* style.css */
+
+/* Variables de Colores- defino las variables a nivel global, defino los colores para usar llamar el color a través del nombre*/
+:root {
+    --color-azul-claro: #2ca2da; /* Light Blue */
+    --color-rosado-claro: #dbaad1; /* Light Pink */
+    --color-gris-claro: #b1acac; /* Light Gray */
+    --color-blanco: #FFFFFF;
+    --color-negro: #333333; /* Usado para texto principal y fondos oscuros */
+    --color-texto-oscuro: #b8b4b4; /* Gris oscuro para texto secundario */
+    --color-primario: var(--color-azul-claro);
+    --color-secundario: var(--color-rosado-claro);
+    --color-fondo-claro: var(--color-gris-claro);
+    --color-error: #FF4D4D; /* Rojo para mensajes de error */
+    --color-success: #1e9e2f; /* Verde para mensajes de éxito */
+    --color-celeste: #0cb7f2: var(--color-azul-claro);
+}
+
+/* Resets básicos y tipografía general es decir las reglas que definen los estilos generales*/
+* {
+    margin: 0;
+    padding: 1px; /*o escribo como px para evitar errores de sintaxis en px p em*/
+    box-sizing: border-box; /*este ajusta el padding a el ancho y alto*/
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+    color: var(--color-texto-oscuro);
+    background-color: var(--color-blanco);
+    scroll-behavior: smooth; /* Para el smooth scrolling nativo busca mejorar la usabilidad 
+    a través del cambio suave de página*/
+}
+
+/* este es un contenedor "inicio Hospedaje y Servicios - Reservas -Contacto - Registrarse - 
+iniciar sesion" que muestra un máximo de 1200 px que evita que el contenido se estire 
+demasiado en las pantallas grandes y mejora la visibilidad en las pantallas pequeñas */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+p, h1, h2, h3 {
+    color: var(--color-negro);
+    margin-bottom: 20px;
+}
+
+a:hover {
+    color: var(--color-negro);
+}
+
+/*Elimino los marcadores en en las lstas ul o no ordenadas*/
+
+ul {
+    list-style: none;
+}
+
+/* Utilidad para ocultar elementos con JavaScript */
+.hidden {
+    display: none !important;
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--color-primario--z);
+    color: var(--color-blanco);
+}
+
+.btn-primary:hover {
+    background-color: #7BBFDC; /* Un azul más oscuro */
+}
+
+.btn-secondary {
+    background-color: var(--color-gris-claro);
+    color: var(--color-negro);
+    border: 1px solid var(--color-texto-oscuro);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-texto-oscuro);
+    color: var(--color-blanco);
+}
+
+.btn-login, .btn-register {
+    background-color: var(--color-rosado-claro);
+    color: var(--color-negro);
+    border: none;
+    padding: 8px 15px;
+    margin-left: 10px; /* Espacio entre botones de iniciar sesión/registrarse */
+}
+
+.btn-login:hover, .btn-register:hover {
+    background-color: #FF8BA6; /* Un rosado más oscuro */
+}
+
+.btn-logout {
+    background-color: var(--color-error);
+    color: var(--color-blanco);
+    padding: 8px 15px;
+    margin-left: 10px;
+}
+.btn-logout:hover {
+    background-color: #CC0000;
+}
+
+.btn-admin {
+    background-color: var(--color-azul-claro);
+    color: var(--color-negro);
+    padding: 8px 15px;
+    margin-left: 10px;
+}
+.btn-admin:hover {
+    background-color: #7BBFDC;
+}
+
+/* Header */
+header {
+    background-color: var(--color-negro);
+    color: var(--color-blanco);
+    padding: 20px; /* Esto contribuye a la altura. Con 20px arriba y 20px abajo, son 40px de padding + la altura del contenido */
+    position: sticky;
+    top: 0;
+    min-height: 80px;
+    z-index: 1000;
+    /*Opcional: Si tu header tiene una altura muy variable, podrías darle un min-height para asegurar un tamaño base */
+    /* min-height: 80px; /* Por ejemplo, si sabes que nunca será más pequeño que esto */
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header .logo {
+    display: flex; /* Para alinear el logo */
+    align-items: center;
+}
+
+header .logo img {
+    max-height: 60px; /* Ajusta la altura máxima del logo */
+    width: auto;
+}
+
+nav ul {
+    display: flex;
+    align-items: center; /* Para alinear los ítems del menú verticalmente */
+}
+
+nav ul li {
+    position: relative;
+    margin-left: 25px;
+}
+
+nav ul li a {
+    color: var(--color-blanco);
+    padding: 5px 0;
+    display: block;
+}
+
+nav ul li a:hover {
+    color: var(--color-primario);
+}
+
+/* Dropdown Menu */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--color-negro);
+    min-width: 180px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+    top: calc(100% + 5px); /* Espacio debajo del enlace padre */
+    left: 0;
+}
+
+.dropdown-content a {
+    color: var(--color-blanco);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: var(--color-gris-claro);
+    color: var(--color-negro);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Main Sections */
+section {
+    padding: 100px 0;
+    text-align: center;
+}
+/* Ejemplo de cómo usar las variables en tu CSS */
+
+.hero-section {
+    background: linear-gradient(rgba(49, 48, 48, 0.5), rgba(0, 0, 0, 0.7)),
+                url('img/vistahotel.jpg') no-repeat center center/cover;
+    color: #ffffff;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content h2 { 
+    font-size: 3em;
+    margin-bottom: 15px;
+    color: var(--color-blanco); /* Aplica el blanco desde la variable */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #ffffff; /* Usa la variable para el texto secundario */
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+.btn-primary {
+    background-color: var(--naranja-vibrante); /* Usa la variable para el color del botón */
+    color: var(--color-blanco);
+    /* otros estilos del botón... */
+}
+
+.info-section {
+    background-color: var(--color-fondo); /* Usa la variable para el color de fondo */
+}
+
+.info-section {
+    background-color: var(--color-fondo-claro);
+}
+
+.featured-section {
+    background-color: var(--color-blanco);
+}
+
+/* tarjetas de servicios*/
+
+.room-grid, .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.room-card, .service-card {
+    background-color: hsla( 0.25turn , 100% , 50% , 0.5 );
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 10px;
+   /* text-align: left;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.room-card img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.room-card h3, .service-card h3 {
+    color: var(--color-primario);
+    margin-bottom: 10px;
+}
+
+.booking-section {
+    background-color: var(--color-rosado-claro);
+    color: var(--color-negro);
+}
+
+/* Estilos para formularios generales (reservas, registro, login, editar) */
+.booking-form, .auth-form {
+    background-color: var(--color-blanco);
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 30px auto 0;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--color-negro);
+}
+
+.form-group input[type="date"],
+.form-group input[type="number"],
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"],
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+/* Mensajes de formulario (error/éxito) */
+.form-message {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+    display: none; /* Oculto por defecto, se muestra con JS */
+}
+
+.form-message.error {
+    background-color: #FFDDDD;
+    color: var(--color-error);
+    border: 1px solid var(--color-error);
+    display: block;
+}
+
+.form-message.success {
+    background-color: #DDEEDD;
+    color: var(--color-success);
+    border: 1px solid var(--color-success);
+    display: block;
+}
+
+/* Estilos para el panel de administración */
+.admin-section {
+    background-color: var(--color-fondo-claro);
+}
+
+.admin-options {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+#user-list-container {
+    margin-top: 50px;
+    text-align: left;
+}
+
+#users-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#users-table th, #users-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+#users-table th {
+    background-color: var(--color-negro);
+    color: var(--color-blanco);
+}
+
+#users-table tbody tr:nth-child(even) {
+    background-color: var(--color-gris-claro);
+}
+
+#users-table .action-buttons .btn {
+    padding: 5px 10px;
+    font-size: 0.85em;
+    margin-right: 5px;
+}
+
+#no-users-message {
+    margin-top: 20px;
+    font-style: italic;
+    color: var(--color-texto-oscuro);
+}
+
+#edit-user-container {
+    margin-top: 50px;
+    text-align: left;
+}
+#edit-user-form .btn {
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+/* Footer con imagen de fondo */
+footer.footer-with-bg {
+    /* Aquí la imagen de fondo del footer */
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/fondo-hotel-footer.jpg') no-repeat center center/cover; /* Asegúrate de que esta ruta sea correcta */
+    color: var(--color-blanco);
+    padding: 40px 0;
+    text-align: center;
+    position: relative; /* Necesario para posicionar el logo del footer */
+}
+
+.footer-logo {
+    margin-bottom: 20px; /* Espacio entre el logo y el contenido del footer */
+}
+
+.footer-logo img {
+    max-height: 80px; /* Ajusta el tamaño del logo del footer */
+    width: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.footer-column {
+    flex: 1;
+    min-width: 250px;
+    margin: 20px;
+}
+
+.footer-column h3 {
+    color: var(--color-primario);
+    margin-bottom: 15px;
+}
+
+.footer-column ul {
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: var(--color-blanco);
+}
+
+.footer-column .social-links a {
+    display: inline-block;
+    color: var(--color-blanco);
+    margin-right: 15px;
+    font-size: 1.2em;
+}
+
+.footer-column .social-links a:hover {
+    color: var(--color-secundario);
+}
+
+.copyright {
+    border-top: 1px solid var(--color-texto-oscuro);
+    padding-top: 20px;
+}
+
+/* Responsividad general */
+@media (max-width: 300px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .dropdown-content {
+        position: static;
+        width: 100%;
+        text-align: center;
+        box-shadow: none;
+    }
+
+    .hero-content h2 {
+        font-size: 2em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-column {
+        min-width: unset;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+   /* .admin-options {
+        flex-direction: column;
+        gap: 10px;
+    }*/
+}
